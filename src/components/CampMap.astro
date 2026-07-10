@@ -1,0 +1,70 @@
+---
+---
+
+<section class="relative overflow-hidden bg-cream-2 py-[100px]">
+  <div class="container-site">
+    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+      <!-- Left -->
+      <div>
+        <span
+          data-reveal
+          class="inline-block -rotate-3 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
+        >
+          Visite du domaine
+        </span>
+        <h2
+          data-reveal
+          data-reveal-delay="0.05"
+          class="relative mt-4 font-display text-[44px] leading-[1.05] text-forest lg:text-[72px] lg:leading-[76px]"
+        >
+          Découvrez notre domaine
+          <img
+            src={`${import.meta.env.BASE_URL}images/qi6XErSOH5xNf7R979ZatYl9rPE.svg`}
+            alt=""
+            aria-hidden="true"
+            class="absolute left-[440px] top-2 hidden h-[37px] w-[45px] lg:block"
+          />
+        </h2>
+        <p
+          data-reveal
+          data-reveal-delay="0.1"
+          class="mt-6 max-w-[540px] font-heading text-[20px] leading-[32px] text-moss"
+        >
+          Un domaine de 5 hectares : bosquet, plaine de jeux, ravin, verger,
+          boulodrome… et une nature préservée qui attire hérons, écureuils,
+          renards et bien d'autres habitants.
+        </p>
+        <div
+          data-reveal
+          data-reveal-delay="0.15"
+          class="mt-8 inline-flex items-center gap-2 rounded-full border border-dashed border-moss/50 px-5 py-3 font-heading text-[18px] text-moss"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          Un cadre exceptionnel, à deux pas de la Sambre
+        </div>
+      </div>
+
+      <!-- Right: illustrated map -->
+      <div class="relative" data-reveal="scale">
+        <img
+          src={`${import.meta.env.BASE_URL}images/4jxNIUkGp24DDZcrem5potXxk.png`}
+          alt="Camp map"
+          class="w-full object-contain"
+        />
+        <!-- Popup photo card -->
+        <div
+          class="absolute left-[6%] top-[18%] w-[46%] max-w-[280px] rotate-1 rounded-2xl border-[6px] border-white bg-white shadow-xl"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}images/R34KiTv2HaS3kOcUvWBsgCilMVA.png`}
+            alt="Campers by the fire"
+            class="h-full w-full rounded-xl object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+const withBase = (p) => import.meta.env.BASE_URL + String(p).replace(/^\//, "");
+const cards = [
+  {
+    img: "Z4AAZfcTBg1HRl56UcTN8xkSAGI.png",
+    title: "Familles inscrites",
+    text: "Déjà inscrit ? Retrouvez le trousseau, les infos pratiques, les dates et tout ce qu'il faut pour préparer le séjour de votre enfant.",
+    cta: "En savoir plus",
+    href: "/camps",
+    variant: "ghost",
+  },
+  {
+    img: "V4VVKCqcRU2bADxD8UkjeAPwFxQ.png",
+    title: "Nouvelles familles",
+    text: "Nouveau chez nous ? Découvrez notre centre, nos camps et notre internat, et pourquoi les familles nous font confiance depuis 1964.",
+    cta: "Nous contacter",
+    href: "/contact",
+    variant: "solid",
+  },
+];
+---
+
+<section class="relative bg-cream py-[120px]">
+  <div class="container-site">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
+      {
+        cards.map((c) => (
+          <div
+            data-reveal
+            class="relative mt-[130px] flex flex-col items-center rounded-[28px] bg-cream-2 px-8 pb-12 pt-[190px] text-center"
+          >
+            <img
+              src={`${import.meta.env.BASE_URL}images/${c.img}`}
+              alt={c.title}
+              class="absolute -top-[130px] left-1/2 h-[290px] w-[84%] -translate-x-1/2 rounded-t-[220px] rounded-b-[20px] object-cover"
+            />
+            <h3 class="font-display text-[36px] leading-none text-forest lg:text-[44px]">
+              {c.title}
+            </h3>
+            <p class="mx-auto mt-5 max-w-[420px] font-heading text-[20px] leading-[32px] text-moss">
+              {c.text}
+            </p>
+            {c.variant === "solid" ? (
+              <a
+                href={withBase(c.href)}
+                class="group relative mt-8 overflow-hidden rounded-full bg-orange px-8 py-[18px]"
+              >
+                <span class="relative z-10 font-heading text-[20px] font-bold text-white">
+                  {c.cta}
+                </span>
+                <span class="absolute inset-0 z-0 origin-bottom scale-y-0 bg-[#e05200] transition-transform duration-300 ease-out group-hover:scale-y-100" />
+              </a>
+            ) : (
+              <a
+                href={withBase(c.href)}
+                class="mt-8 rounded-full border-2 border-forest px-8 py-[16px] font-heading text-[20px] font-bold text-forest transition-colors duration-300 hover:bg-forest hover:text-white"
+              >
+                {c.cta}
+              </a>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

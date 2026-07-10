@@ -1,0 +1,119 @@
+---
+const photos = [
+  { f: "L9pkAW6S0g1puqoMYxGBnMGiu8.png", rot: "-rotate-[10deg]", y: "translate-y-2" },
+  { f: "fdj5MNz5gnfjCqfGbjwsxBDal4.png", rot: "-rotate-[5deg]", y: "translate-y-1" },
+  { f: "Y1DDT0LHJ6equkclL1hdJDDLGkU.png", rot: "rotate-0", y: "-translate-y-1" },
+  { f: "juEWvKMC87vRnM9RosgdS1yRA.png", rot: "rotate-[5deg]", y: "translate-y-1" },
+  { f: "5a67UxRtfQ3E47W1qlnhSLvpHg.png", rot: "rotate-[10deg]", y: "translate-y-2" },
+];
+---
+
+<section class="relative overflow-hidden bg-cream py-[100px]">
+  <div class="container-site">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
+      <!-- LEFT COLUMN -->
+      <div class="flex flex-col gap-10">
+        <!-- Photo fan panel -->
+        <div
+          data-reveal="scale"
+          class="relative overflow-hidden rounded-[28px] bg-amber px-6 py-12"
+        >
+          <div class="flex items-center justify-center">
+            {
+              photos.map((p, i) => (
+                <img
+                  src={`${import.meta.env.BASE_URL}images/${p.f}`}
+                  alt=""
+                  aria-hidden="true"
+                  class:list={[
+                    "h-[210px] w-[172px] rounded-2xl border-[5px] border-white object-cover shadow-lg",
+                    i > 0 && "-ml-10",
+                    p.rot,
+                    p.y,
+                  ]}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Testimonial card -->
+        <div
+          data-reveal
+          class="rounded-[28px] bg-lime p-8"
+        >
+          <div class="flex items-center gap-4">
+            <img
+              src={`${import.meta.env.BASE_URL}images/qS6AeZIP8Hw44vzi8QuKOaizqps.png`}
+              alt="Sammy Heli"
+              class="h-16 w-16 rounded-full object-cover"
+            />
+            <div class="flex-1">
+              <div class="font-heading text-[24px] font-semibold text-forest">
+                Une maman
+              </div>
+              <div class="font-heading text-[18px] text-forest/70">
+                Parent d'un campeur
+              </div>
+            </div>
+            <div class="flex gap-1.5">
+              <span class="h-2 w-2 rounded-full bg-forest/60"></span>
+              <span class="h-2 w-2 rounded-full bg-forest/60"></span>
+              <span class="h-2 w-2 rounded-full bg-forest/60"></span>
+            </div>
+          </div>
+          <p class="mt-6 font-heading text-[24px] leading-[32px] text-forest">
+            «&nbsp;Notre enfant est revenu rempli de joie et d'histoires à
+            raconter&nbsp;! L'équipe bienveillante, les jeux et les activités ont
+            rendu le séjour inoubliable. Tourne-Bride, c'est un lieu où les
+            enfants grandissent, explorent et se sentent chez eux.&nbsp;»
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="flex flex-col gap-10">
+        <!-- Heading -->
+        <div class="relative">
+          <span
+            data-reveal
+            class="inline-block -rotate-2 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
+          >
+            Ils en parlent
+          </span>
+          <h2
+            data-reveal
+            data-reveal-delay="0.05"
+            class="relative mt-4 font-display text-[40px] leading-[1.05] text-forest lg:text-[62px] lg:leading-[66px]"
+          >
+            Ce que disent les familles
+            <img
+              src={`${import.meta.env.BASE_URL}images/qi6XErSOH5xNf7R979ZatYl9rPE.svg`}
+              alt=""
+              aria-hidden="true"
+              class="absolute -right-2 top-0 hidden h-[37px] w-[45px] lg:block"
+            />
+          </h2>
+        </div>
+
+        <!-- Video image -->
+        <div class="relative flex-1" data-reveal="scale">
+          <img
+            src={`${import.meta.env.BASE_URL}images/q2B3H35t4dIyL6Q8H43K4jPcopQ.png`}
+            alt="Sunset at camp"
+            class="h-full min-h-[360px] w-full rounded-[28px] object-cover"
+          />
+          <button
+            type="button"
+            aria-label="Play video"
+            class="absolute right-6 top-6 flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-lg transition-transform hover:scale-110"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M8 5v14l11-7z" fill="#123d25"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

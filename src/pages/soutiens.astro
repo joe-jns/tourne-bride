@@ -1,0 +1,130 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const ways = [
+  {
+    title: "Faire un don",
+    text: "Chaque don, petit ou grand, permet d'accueillir davantage d'enfants et d'entretenir le domaine. Versement libre sur le compte de l'ASBL.",
+  },
+  {
+    title: "Louer un bâtiment",
+    text: "Le produit des locations est versé intégralement à l'œuvre. Réserver le chalet, le château ou le centre d'hébergement, c'est déjà nous soutenir.",
+    href: "/locations",
+  },
+  {
+    title: "Donner de son temps",
+    text: "Encadrement, bricolage, entretien, cuisine, animation… Les bonnes volontés sont toujours les bienvenues autour de Tourne-Bride.",
+  },
+  {
+    title: "Le vestiaire « Adonaï Jireh »",
+    text: "Nous veillons à ce que chaque enfant soit bien équipé : bonnet, écharpe, vêtements secs et chapeaux de soleil. Vos dons de vêtements y contribuent.",
+  },
+];
+---
+
+<Layout
+  title="Nous soutenir — Tourne-Bride"
+  description="Soutenez le Centre Protestant Tourne-Bride : dons, locations, bénévolat et vestiaire. Une œuvre d'accueil des enfants depuis 1964."
+>
+  <Navbar />
+  <main>
+    <PageHero
+      eyebrow="Nous soutenir"
+      title="Soutenez l'œuvre de Tourne-Bride"
+      subtitle="Depuis 1964, nous accueillons les enfants dans un cadre sûr et bienveillant. Votre soutien, sous toutes ses formes, rend cette mission possible."
+    />
+
+    <!-- Intro -->
+    <section class="bg-cream py-[100px]">
+      <div class="container-site max-w-[900px] text-center">
+        <span
+          data-reveal
+          class="inline-block -rotate-3 rounded-md bg-amber px-3 py-1 font-display text-[18px] leading-none text-forest"
+        >
+          Notre mission
+        </span>
+        <h2
+          data-reveal
+          data-reveal-delay="0.05"
+          class="mt-5 font-display text-[36px] leading-[1.05] text-forest lg:text-[56px] lg:leading-[60px]"
+        >
+          Le prix n'est jamais un obstacle
+        </h2>
+        <p
+          data-reveal
+          data-reveal-delay="0.1"
+          class="mx-auto mt-6 max-w-[720px] font-heading text-[20px] leading-[32px] text-moss"
+        >
+          Tourne-Bride a aussi une mission d'aide et d'accueil des personnes en
+          détresse. Le prix d'un séjour ne nous permet aucun bénéfice — au
+          contraire — et ne peut jamais empêcher un enfant de participer. C'est
+          grâce à votre générosité que nous pouvons tenir cet engagement.
+        </p>
+      </div>
+    </section>
+
+    <!-- Comment soutenir -->
+    <section class="bg-cream-2 py-[100px]">
+      <div class="container-site">
+        <div class="mb-12 max-w-[760px]">
+          <span
+            data-reveal
+            class="inline-block -rotate-2 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
+          >
+            Comment aider
+          </span>
+          <h2
+            data-reveal
+            data-reveal-delay="0.05"
+            class="mt-4 font-display text-[40px] leading-[1.05] text-forest lg:text-[64px] lg:leading-[68px]"
+          >
+            Quatre façons de nous soutenir
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2" data-stagger>
+          {
+            ways.map((w) => (
+              <div data-reveal class="rounded-[24px] bg-cream p-8">
+                <h3 class="font-display text-[26px] leading-none text-forest">{w.title}</h3>
+                <p class="mt-4 font-heading text-[18px] leading-[27px] text-moss">{w.text}</p>
+                {w.href && (
+                  <a href={import.meta.env.BASE_URL + w.href.replace(/^\//, "")} class="mt-4 inline-block font-heading text-[18px] font-bold text-orange hover:underline">
+                    Voir les locations →
+                  </a>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- IBAN highlight -->
+    <section class="bg-forest py-[110px]">
+      <div class="container-site">
+        <div class="mx-auto max-w-[760px] rounded-[32px] bg-amber p-10 text-center text-forest lg:p-14" data-reveal="scale">
+          <div class="font-display text-[20px]">Faire un don</div>
+          <div class="mt-4 font-display text-[30px] leading-none tracking-wide sm:text-[44px]">
+            BE52 0882 1037 5009
+          </div>
+          <p class="mx-auto mt-5 max-w-[520px] font-heading text-[18px] leading-[26px] text-forest/85">
+            Au nom du Centre Protestant Tourne-Bride ASBL. Pour un camp, indiquez
+            en communication : nom de l'enfant + votre n° de téléphone.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      title="Envie de nous aider autrement ?"
+      text="Bénévolat, don de matériel, partenariat… parlons-en, chaque coup de main compte."
+      buttonLabel="Nous contacter"
+      buttonHref="/contact"
+    />
+  </main>
+  <Footer />
+</Layout>

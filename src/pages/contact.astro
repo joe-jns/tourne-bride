@@ -1,0 +1,107 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<Layout
+  title="Contact — Tourne-Bride"
+  description="Contactez le Centre Protestant Tourne-Bride : Oncle Yvan et Tante Nadine, par téléphone, email ou courrier. Château Grignard, Sars-la-Buissière."
+>
+  <Navbar />
+  <main>
+    <PageHero
+      eyebrow="Contact"
+      title="Écrivez-nous, appelez-nous, passez nous voir"
+      subtitle="Une question sur un camp, l'internat ou une location ? Oncle Yvan et Tante Nadine vous répondent avec plaisir."
+    />
+
+    <section class="bg-cream py-[100px]">
+      <div class="container-site">
+        <div class="grid grid-cols-1 gap-14 lg:grid-cols-2">
+          <!-- Coordonnées -->
+          <div data-reveal>
+            <span class="inline-block -rotate-3 rounded-md bg-amber px-3 py-1 font-display text-[18px] leading-none text-forest">
+              Nos coordonnées
+            </span>
+            <h2 class="mt-4 font-display text-[36px] leading-[1.05] text-forest lg:text-[52px] lg:leading-[56px]">
+              Oncle Yvan & Tante Nadine
+            </h2>
+
+            <div class="mt-8 space-y-6">
+              <div class="flex items-start gap-4">
+                <span class="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lime text-forest">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5c0 8 7 15 15 15l1.5-3.5-4-2-1.5 2c-2.5-1-4.5-3-5.5-5.5l2-1.5-2-4L4 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                </span>
+                <div>
+                  <div class="font-heading text-[18px] font-bold text-forest">Par téléphone</div>
+                  <a href="tel:+3271591961" class="block font-heading text-[18px] text-moss hover:text-forest">071 59 19 61 — la « maison »</a>
+                  <a href="tel:+32496181414" class="block font-heading text-[18px] text-moss hover:text-forest">0496 18 14 14 — Tante Nadine</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span class="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lime text-forest">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+                </span>
+                <div>
+                  <div class="font-heading text-[18px] font-bold text-forest">Par email</div>
+                  <a href="mailto:yvan.dussart@tourne-bride.be" class="block font-heading text-[18px] text-moss hover:text-forest">yvan.dussart@tourne-bride.be</a>
+                  <a href="mailto:najuduja@hotmail.com" class="block font-heading text-[18px] text-moss hover:text-forest">najuduja@hotmail.com — Tante Nadine</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <span class="mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lime text-forest">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+                </span>
+                <div>
+                  <div class="font-heading text-[18px] font-bold text-forest">Par courrier</div>
+                  <p class="font-heading text-[18px] text-moss">
+                    Tourne-Bride — Château Grignard<br />
+                    Chevesne 95, 6542 Sars-la-Buissière
+                  </p>
+                  <a href={`${import.meta.env.BASE_URL}venir-ici`} class="mt-1 inline-block font-heading text-[18px] font-bold text-orange hover:underline">
+                    Comment venir ? →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulaire -->
+          <div data-reveal data-reveal-delay="0.1" class="rounded-[28px] bg-cream-2 p-8 lg:p-10">
+            <h2 class="font-display text-[28px] leading-none text-forest lg:text-[34px]">
+              Envoyez-nous un message
+            </h2>
+            <!-- TODO: brancher l'action (webhook n8n ou service mail). -->
+            <form class="mt-6 space-y-5" name="contact" method="POST" action="#">
+              <div>
+                <label class="mb-2 block font-heading text-[16px] font-semibold text-forest" for="name">Votre nom</label>
+                <input id="name" name="name" type="text" required
+                  class="w-full rounded-xl border border-forest/15 bg-white px-4 py-3 font-heading text-[17px] text-forest outline-none focus:border-orange" />
+              </div>
+              <div>
+                <label class="mb-2 block font-heading text-[16px] font-semibold text-forest" for="email">Votre email</label>
+                <input id="email" name="email" type="email" required
+                  class="w-full rounded-xl border border-forest/15 bg-white px-4 py-3 font-heading text-[17px] text-forest outline-none focus:border-orange" />
+              </div>
+              <div>
+                <label class="mb-2 block font-heading text-[16px] font-semibold text-forest" for="message">Votre message</label>
+                <textarea id="message" name="message" rows="5" required
+                  class="w-full rounded-xl border border-forest/15 bg-white px-4 py-3 font-heading text-[17px] text-forest outline-none focus:border-orange"></textarea>
+              </div>
+              <button type="submit"
+                class="group relative w-full overflow-hidden rounded-full bg-orange px-8 py-[16px]">
+                <span class="relative z-10 font-heading text-[20px] font-bold text-white">Envoyer</span>
+                <span class="absolute inset-0 z-0 origin-bottom scale-y-0 bg-[#e05200] transition-transform duration-300 ease-out group-hover:scale-y-100"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

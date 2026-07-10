@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* ---- Fonts (self-hosted via Fontsource) ---- */
+@import "@fontsource/luckiest-guy/400.css";
+@import "@fontsource/gabarito/400.css";
+@import "@fontsource/gabarito/500.css";
+@import "@fontsource/gabarito/600.css";
+@import "@fontsource/gabarito/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+@theme {
+  /* ---- Palette (extracted from Starlight Camp template) ---- */
+  --color-forest: #1c4425;        /* primary dark green */
+  --color-forest-deep: #123d25;   /* hero overlay base */
+  --color-orange: #ff5c00;        /* primary CTA */
+  --color-lime: #93d35c;          /* accent green */
+  --color-amber: #feb835;         /* highlight yellow */
+  --color-cream: #f1f8e7;         /* light background */
+  --color-cream-2: #e5f0d5;       /* alt light background */
+  --color-pale: #d5eabd;          /* palest green */
+  --color-moss: #46664e;          /* muted green body text */
+  --color-mist: #d0d8d3;          /* light grey text on dark */
+
+  /* ---- Fonts ---- */
+  --font-display: "Luckiest Guy", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Gabarito", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- Layout ---- */
+  --container-site: 1360px;
+}
+
+/* ---- Base ---- */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-cream);
+  color: var(--color-forest);
+  overflow-x: clip;
+}
+
+/* Luckiest Guy is display-only: never italic/bold synthesize */
+.font-display {
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Reusable site container */
+.container-site {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* Animation base: elements revealed by Motion start hidden.
+   `.reveal` is set to visible immediately if JS is disabled. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] { opacity: 0; }
+}
+
+/* Hidden scrollbar (draggable carousels) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom drag cursor */
+[data-drag-cursor] .drag-inner {
+  transition: transform 0.2s ease;
+}
+[data-drag-cursor].is-dragging .drag-inner {
+  transform: scale(0.82);
+}
+
+/* Timeline dots (How it works) */
+[data-timeline-dot] {
+  background: var(--color-moss);
+  transition: background 0.3s ease;
+}
+[data-timeline-dot].on {
+  background: var(--color-lime);
+}
+[data-timeline-dot] svg {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+[data-timeline-dot].on svg {
+  opacity: 1;
+}
+
+/* Slow continuous rotation for decorative circular-text rings */
+@keyframes spin-cw { to { transform: rotate(360deg); } }
+@keyframes spin-ccw { to { transform: rotate(-360deg); } }
+.animate-spin-cw { animation: spin-cw 60s linear infinite; }
+.animate-spin-ccw { animation: spin-ccw 60s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-cw, .animate-spin-ccw { animation: none; }
+}

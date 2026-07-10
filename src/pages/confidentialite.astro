@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<Layout title="Confidentialité — Tourne-Bride" description="Politique de confidentialité du Centre Protestant Tourne-Bride ASBL.">
+  <Navbar />
+  <main>
+    <PageHero eyebrow="Informations" title="Politique de confidentialité" />
+
+    <section class="bg-cream py-[90px]">
+      <div class="container-site max-w-[820px] space-y-10">
+        <div data-reveal>
+          <h2 class="font-display text-[26px] text-forest">Données collectées</h2>
+          <p class="mt-3 font-heading text-[18px] leading-[28px] text-moss">
+            Nous ne collectons que les données que vous nous transmettez
+            volontairement, notamment via le formulaire de contact (nom, adresse
+            email, message) ou lors d'une inscription à un camp.
+          </p>
+        </div>
+        <div data-reveal>
+          <h2 class="font-display text-[26px] text-forest">Utilisation</h2>
+          <p class="mt-3 font-heading text-[18px] leading-[28px] text-moss">
+            Ces données servent uniquement à répondre à votre demande et à
+            organiser l'accueil de votre enfant. Elles ne sont ni vendues, ni
+            cédées à des tiers.
+          </p>
+        </div>
+        <div data-reveal>
+          <h2 class="font-display text-[26px] text-forest">Vos droits</h2>
+          <p class="mt-3 font-heading text-[18px] leading-[28px] text-moss">
+            Conformément au RGPD, vous pouvez à tout moment demander l'accès, la
+            rectification ou la suppression de vos données en nous contactant à
+            <a href="mailto:yvan.dussart@tourne-bride.be" class="font-bold text-orange hover:underline">yvan.dussart@tourne-bride.be</a>.
+          </p>
+        </div>
+        <div data-reveal>
+          <h2 class="font-display text-[26px] text-forest">Cookies</h2>
+          <p class="mt-3 font-heading text-[18px] leading-[28px] text-moss">
+            Ce site n'utilise pas de cookies de suivi publicitaire. Seuls des
+            cookies techniques nécessaires à son bon fonctionnement peuvent être
+            utilisés.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

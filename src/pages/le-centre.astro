@@ -1,0 +1,312 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const spaces = [
+  { img: "b1R16Nkgvz2L6EUaX9klywT61c.png", title: "Le bosquet" },
+  { img: "wMQO1IFTk82OAwti4KD5c2HNQvM.png", title: "La plaine de jeux" },
+  { img: "fTqizCj5ZHnhlU1Eiw2ixcK0.png", title: "Le ravin & l'escalade" },
+  { img: "i738aK4KaaUMFTdJtyz47uLUPmA.png", title: "Le verger" },
+  { img: "VtDbws3WWG30pRGlf9pNaTEgjs.png", title: "Le boulodrome" },
+  { img: "EtEKI00462QzvuEC2cekaszNQ.png", title: "Le terrain de basket" },
+];
+
+const buildings = [
+  {
+    img: "b1R16Nkgvz2L6EUaX9klywT61c.png",
+    name: "Le Château",
+    text: "Le Château Grignard, cœur historique du domaine, au milieu des arbres et du calme.",
+  },
+  {
+    img: "Sv1tGNHJc7wyM0MiwrqLzyEZVE.png",
+    name: "Le Centre d'hébergement",
+    text: "Un bâtiment agréé aux normes de sécurité et d'hygiène de la Fédération Wallonie-Bruxelles, bien chauffé et ventilé.",
+  },
+  {
+    img: "fTqizCj5ZHnhlU1Eiw2ixcK0.png",
+    name: "La Maison canadienne",
+    text: "Le chalet « Sur le Roc », niché à l'écart, pour un séjour au plus près de la nature.",
+  },
+];
+
+const surroundings = [
+  { place: "À fleur de propriété", detail: "Le sentier GR129, la pêche dans la Vieille Sambre et le Ravel qui longe la rivière." },
+  { place: "Lobbes", detail: "La collégiale Saint-Ursmer, les vestiges de l'abbaye, le musée du miel et le complexe sportif du Scavin." },
+  { place: "Bienne — 3 km", detail: "Centre équestre pour une initiation à l'équitation." },
+  { place: "Thuin — 13 km", detail: "Cité des bateliers, jardins suspendus, unique pont en S et maison de l'Imprimerie." },
+  { place: "Binche — 14 km", detail: "Le musée du masque et du carnaval, les remparts et la piscine." },
+  { place: "Abbaye d'Aulne — 15 km", detail: "Ruines majestueuses, mini-golf et promenades en bateau." },
+  { place: "Estinnes — 16 km", detail: "Un impressionnant parc d'éoliennes géantes." },
+  { place: "Lacs de l'Eau d'Heure — 30 km", detail: "Les plus grands lacs de Belgique, mille activités de plein air." },
+];
+---
+
+<Layout
+  title="Le domaine — Tourne-Bride"
+  description="5 hectares au cœur du parc naturel de la Haute Sambre : bosquet, ravin, verger, faune préservée et trois lieux de vie."
+>
+  <Navbar />
+  <main>
+    <PageHero
+      eyebrow="Le domaine"
+      title="Un havre de nature au cœur de la Thudinie"
+      subtitle="Cinq hectares sur un promontoire rocheux qui surplombe la Sambre, dans une région charmante et méconnue de Belgique, à 12 km de la France."
+      image="t04pqFrRoEcpXW1STsKsnFDoMCI.png"
+    />
+
+    <!-- Notre vocation -->
+    <section class="bg-cream py-[100px]">
+      <div class="container-site max-w-[900px] text-center">
+        <span
+          data-reveal
+          class="inline-block -rotate-3 rounded-md bg-amber px-3 py-1 font-display text-[18px] leading-none text-forest"
+        >
+          Notre vocation
+        </span>
+        <h2
+          data-reveal
+          data-reveal-delay="0.05"
+          class="mt-5 font-display text-[40px] leading-[1.05] text-forest lg:text-[64px] lg:leading-[68px]"
+        >
+          Un lieu pour grandir, depuis 1964
+        </h2>
+        <p
+          data-reveal
+          data-reveal-delay="0.1"
+          class="mx-auto mt-6 max-w-[760px] font-heading text-[20px] leading-[32px] text-moss"
+        >
+          Le Centre Protestant Tourne-Bride a pour objectif l'épanouissement
+          général des enfants — sur le plan moral, psychologique et spirituel —
+          toujours dans le respect de la liberté de conscience de l'enfant et de
+          sa famille. Un cadre bienveillant où chacun trouve sa place.
+        </p>
+      </div>
+    </section>
+
+    <!-- Un cadre naturel unique -->
+    <section class="bg-forest py-[120px]">
+      <div class="container-site">
+        <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+          <div class="relative order-2 lg:order-1" data-reveal="scale">
+            <img
+              src={`${import.meta.env.BASE_URL}images/Sv1tGNHJc7wyM0MiwrqLzyEZVE.png`}
+              alt="Le domaine boisé de Tourne-Bride"
+              class="h-[460px] w-full rounded-t-[220px] rounded-b-[24px] object-cover"
+            />
+            <span
+              class="absolute right-4 top-14 inline-block rotate-6 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
+            >
+              5 hectares
+            </span>
+          </div>
+          <div class="order-1 lg:order-2">
+            <span
+              data-reveal
+              class="inline-block -rotate-3 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
+            >
+              Grand air
+            </span>
+            <h2
+              data-reveal
+              data-reveal-delay="0.05"
+              class="mt-4 font-display text-[40px] leading-[1.05] text-white lg:text-[60px] lg:leading-[64px]"
+            >
+              Un cadre naturel unique
+            </h2>
+            <p
+              data-reveal
+              data-reveal-delay="0.1"
+              class="mt-6 font-heading text-[20px] leading-[32px] text-mist"
+            >
+              À l'écart du village, le domaine reçoit en droite ligne l'air
+              tonifiant de l'océan Atlantique quand souffle le vent d'Ouest. Un
+              bosquet, une plaine de jeux, un ravin, un verger… autant d'espaces
+              pour explorer, jouer et respirer.
+            </p>
+            <p
+              data-reveal
+              data-reveal-delay="0.15"
+              class="mt-4 font-heading text-[20px] leading-[32px] text-mist"
+            >
+              Les ornithologues de la région qualifient l'endroit de
+              paradisiaque — et pour cause.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nos espaces -->
+    <section class="bg-cream-2 py-[100px]">
+      <div class="container-site">
+        <div class="mb-12 max-w-[760px]">
+          <span
+            data-reveal
+            class="inline-block -rotate-2 rounded-md bg-amber px-3 py-1 font-display text-[18px] leading-none text-forest"
+          >
+            Nos espaces
+          </span>
+          <h2
+            data-reveal
+            data-reveal-delay="0.05"
+            class="mt-4 font-display text-[40px] leading-[1.05] text-forest lg:text-[64px] lg:leading-[68px]"
+          >
+            Des lieux pour tout vivre
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
+          {
+            spaces.map((s) => (
+              <div data-reveal="scale" class="group relative h-[340px] overflow-hidden rounded-[28px]">
+                <img
+                  src={`${import.meta.env.BASE_URL}images/${s.img}`}
+                  alt={s.title}
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent" />
+                <h3 class="absolute bottom-6 left-6 right-6 font-heading text-[26px] font-extrabold leading-[1.1] text-white">
+                  {s.title}
+                </h3>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Une nature préservée -->
+    <section class="bg-forest py-[120px]">
+      <div class="container-site">
+        <div class="grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+          <div>
+            <span
+              data-reveal
+              class="inline-block -rotate-3 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
+            >
+              Nature préservée
+            </span>
+            <h2
+              data-reveal
+              data-reveal-delay="0.05"
+              class="mt-4 font-display text-[40px] leading-[1.05] text-white lg:text-[60px] lg:leading-[64px]"
+            >
+              Un petit coin de paradis
+            </h2>
+            <p
+              data-reveal
+              data-reveal-delay="0.1"
+              class="mt-6 font-heading text-[20px] leading-[32px] text-mist"
+            >
+              Le domaine est le refuge des faisans, des renards, d'un couple de
+              hérons cendrés et d'une dizaine d'écureuils, mais aussi des lapins
+              sauvages, grenouilles, hérissons et salamandres. Que de curiosités
+              pour le jeune citadin ! La flore et les champignons y sont tout
+              aussi passionnants au fil des saisons.
+            </p>
+          </div>
+          <!-- Highlight abeilles -->
+          <div
+            data-reveal="scale"
+            class="rounded-[28px] bg-amber p-10 text-forest"
+          >
+            <div class="font-display text-[28px] leading-none">Depuis 2015</div>
+            <h3 class="mt-4 font-display text-[34px] leading-[1.05] lg:text-[44px]">
+              Nos abeilles & notre miel
+            </h3>
+            <p class="mt-4 font-heading text-[20px] leading-[30px] text-forest/85">
+              Des abeilles très particulières, non agressives, qui produisent un
+              miel absolument délectable. Un concours d'astuces de l'apiculteur
+              fait qu'elles butinent presque uniquement chez nous, là où il n'y a
+              aucune pulvérisation — voilà aussi pourquoi nos soupes à l'ortie
+              sont si appréciées !
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trois lieux de vie -->
+    <section class="bg-cream py-[100px]">
+      <div class="container-site">
+        <div class="mb-12 max-w-[760px]">
+          <span
+            data-reveal
+            class="inline-block -rotate-2 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
+          >
+            L'habitat
+          </span>
+          <h2
+            data-reveal
+            data-reveal-delay="0.05"
+            class="mt-4 font-display text-[40px] leading-[1.05] text-forest lg:text-[64px] lg:leading-[68px]"
+          >
+            Trois lieux de vie
+          </h2>
+          <p
+            data-reveal
+            data-reveal-delay="0.1"
+            class="mt-5 max-w-[620px] font-heading text-[20px] leading-[32px] text-moss"
+          >
+            L'habitat se répartit en trois parties non attenantes, chacune avec
+            son caractère.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3" data-stagger>
+          {
+            buildings.map((b) => (
+              <div data-reveal class="overflow-hidden rounded-[28px] bg-cream-2">
+                <img src={`${import.meta.env.BASE_URL}images/${b.img}`} alt={b.name} class="h-[240px] w-full object-cover" />
+                <div class="p-7">
+                  <h3 class="font-display text-[26px] leading-none text-forest">{b.name}</h3>
+                  <p class="mt-3 font-heading text-[18px] leading-[26px] text-moss">{b.text}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Aux alentours -->
+    <section class="bg-cream-2 py-[100px]">
+      <div class="container-site">
+        <div class="mb-12 max-w-[820px]">
+          <span
+            data-reveal
+            class="inline-block -rotate-3 rounded-md bg-amber px-3 py-1 font-display text-[18px] leading-none text-forest"
+          >
+            Aux alentours
+          </span>
+          <h2
+            data-reveal
+            data-reveal-delay="0.05"
+            class="mt-4 font-display text-[40px] leading-[1.05] text-forest lg:text-[64px] lg:leading-[68px]"
+          >
+            À deux pas de mille découvertes
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
+          {
+            surroundings.map((s) => (
+              <div data-reveal class="rounded-[22px] bg-cream p-6">
+                <h3 class="font-heading text-[20px] font-bold text-forest">{s.place}</h3>
+                <p class="mt-2 font-heading text-[17px] leading-[24px] text-moss">{s.detail}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <CtaBand
+      title="Envie de découvrir le domaine ?"
+      text="Contactez-nous pour organiser une visite, réserver un séjour ou simplement en savoir plus."
+      buttonLabel="Nous contacter"
+      buttonHref="/contact"
+    />
+  </main>
+  <Footer />
+</Layout>

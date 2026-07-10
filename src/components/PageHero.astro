@@ -1,0 +1,62 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  image?: string; // filename in /images, used as background
+}
+const { eyebrow, title, subtitle, image } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-forest pb-[90px] pt-[170px]">
+  {
+    image && (
+      <div class="absolute inset-0">
+        <img
+          src={`${import.meta.env.BASE_URL}images/${image}`}
+          alt=""
+          aria-hidden="true"
+          class="h-full w-full object-cover"
+          style="object-position:50% 55%"
+        />
+        <div
+          class="absolute inset-0"
+          style="background:linear-gradient(rgba(18,61,37,0.55), rgba(18,61,37,0.82))"
+        />
+      </div>
+    )
+  }
+
+  <div class="container-site relative z-10">
+    <span
+      data-reveal
+      class="inline-block -rotate-3 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
+    >
+      {eyebrow}
+    </span>
+    <h1
+      data-reveal
+      data-reveal-delay="0.05"
+      class="relative mt-5 max-w-[900px] font-display text-[48px] leading-[0.98] text-white sm:text-[64px] lg:text-[92px]"
+    >
+      {title}
+      <img
+        src={`${import.meta.env.BASE_URL}images/qi6XErSOH5xNf7R979ZatYl9rPE.svg`}
+        alt=""
+        aria-hidden="true"
+        class="absolute -right-2 -top-6 hidden h-[37px] w-[45px] lg:block"
+      />
+    </h1>
+    {
+      subtitle && (
+        <p
+          data-reveal
+          data-reveal-delay="0.1"
+          class="mt-6 max-w-[620px] font-heading text-[20px] leading-[32px] text-mist"
+        >
+          {subtitle}
+        </p>
+      )
+    }
+  </div>
+</section>

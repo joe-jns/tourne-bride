@@ -1,0 +1,80 @@
+---
+// Floating circular photos + doodles, positioned to match the template (1440 canvas)
+const floaters = [
+  { file: "74DpwWvKPwaHemMYBszkeIFSlVM.png", size: 138, top: 91, left: 77 },
+  { file: "MucmjTJJ0P7Fl73awJwD19PLx0.png", size: 138, top: 67, left: 1127 },
+  { file: "cYqgolaVLMmWTSwarCoHme7iXT8.png", size: 138, top: 289, left: 1266 },
+  { file: "RoXQ3J7vvoQQGqJPm8W9nsxw6J0.png", size: 143, top: 481, left: 141 },
+  { file: "tsIad10819yKvFUBsa3eVSXJmA.png", size: 138, top: 523, left: 1072 },
+];
+---
+
+<section class="relative min-h-[720px] overflow-hidden bg-cream">
+  <!-- Floating circular photos (anchored to a centered 1440 canvas) -->
+  <div class="pointer-events-none absolute inset-0 hidden lg:block">
+    <div class="relative mx-auto h-full w-[1440px] max-w-full">
+      {
+        floaters.map((f, i) => (
+          <img
+            src={`${import.meta.env.BASE_URL}images/${f.file}`}
+            alt=""
+            aria-hidden="true"
+            data-reveal="scale"
+            data-reveal-delay={0.1 + i * 0.08}
+            class="absolute rounded-full object-cover shadow-sm"
+            style={`top:${f.top}px; left:${f.left}px; width:${f.size}px; height:${f.size}px`}
+          />
+        ))
+      }
+      <!-- Doodles -->
+      <img
+        src={`${import.meta.env.BASE_URL}images/bp8cD6ZRWiiFkH9hCPMVYrST3Q.svg`}
+        alt=""
+        aria-hidden="true"
+        class="absolute h-[39px] w-[46px]"
+        style="top:120px; left:1071px"
+      />
+      <img
+        src={`${import.meta.env.BASE_URL}images/qi6XErSOH5xNf7R979ZatYl9rPE.svg`}
+        alt=""
+        aria-hidden="true"
+        class="absolute h-[37px] w-[45px]"
+        style="top:461px; left:107px"
+      />
+    </div>
+  </div>
+
+  <!-- Centered content -->
+  <div class="container-site relative z-10 flex min-h-[720px] flex-col items-center justify-center py-24 text-center">
+    <h2
+      data-reveal
+      class="font-display text-[40px] leading-[1.05] text-forest sm:text-[56px] lg:text-[72px] lg:leading-[76px]"
+      style="max-width:930px"
+    >
+      Émerveillement, amitié, nature et souvenirs pour la vie
+    </h2>
+    <p
+      data-reveal
+      data-reveal-delay="0.1"
+      class="mt-6 max-w-[900px] font-heading text-[20px] leading-[32px] text-moss"
+    >
+      Chaque séjour est une occasion d'explorer, de tisser des liens et de créer
+      des souvenirs inoubliables, tout en se faisant des amis, en découvrant de
+      nouvelles passions et en s'émerveillant devant la beauté de la nature.
+    </p>
+    <a
+      href={`${import.meta.env.BASE_URL}camps`}
+      data-reveal
+      data-reveal-delay="0.18"
+      class="group relative mt-10 overflow-hidden rounded-full bg-orange px-8 py-[18px]"
+    >
+      <span class="relative z-10 font-heading text-[20px] font-bold text-white">
+        Découvrir nos activités
+      </span>
+      <span
+        class="absolute inset-0 z-0 origin-bottom scale-y-0 bg-[#e05200] transition-transform duration-300 ease-out group-hover:scale-y-100"
+      >
+      </span>
+    </a>
+  </div>
+</section>

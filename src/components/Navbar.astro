@@ -1,0 +1,141 @@
+---
+const navLinks = [
+  { label: "Accueil", href: "/" },
+  { label: "Le domaine", href: "/le-centre" },
+  { label: "Nos camps", href: "/camps" },
+  { label: "Internat", href: "/internat" },
+  { label: "Contact", href: "/contact" },
+];
+
+const BASE = import.meta.env.BASE_URL;
+const withBase = (p: string) => BASE + String(p).replace(/^\//, "");
+
+// Strip the base prefix from the current path before comparing to link hrefs.
+const baseNoSlash = BASE.replace(/\/$/, "");
+let path = Astro.url.pathname.replace(/\/+$/, "");
+if (baseNoSlash && path.startsWith(baseNoSlash)) path = path.slice(baseNoSlash.length);
+path = path || "/";
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path === href || path.startsWith(href + "/");
+---
+
+<header class="fixed inset-x-0 top-0 z-50 h-24">
+  <!-- Linear gradient bg -->
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background:linear-gradient(rgba(18,61,37,0.16) 0%, rgba(18,61,37,0.01) 100%)"
+  >
+  </div>
+  <!-- Blur backdrop -->
+  <div class="pointer-events-none absolute inset-0 backdrop-blur-[4px]"></div>
+
+  <div class="container-site relative z-10 flex h-24 items-center justify-between">
+    <!-- Logo -->
+    <a href={import.meta.env.BASE_URL} class="flex items-center gap-2.5" aria-label="Centre Tourne-Bride">
+      <svg viewBox="0 0 120 100" class="h-9 w-auto" fill="none">
+        <path d="M60 12 L112 88 H8 Z" fill="#feb835" stroke="#123d25" stroke-width="5" stroke-linejoin="round"></path>
+        <path d="M60 32 C48 55 46 72 46 88 H74 C74 72 72 55 60 32 Z" fill="#f1f8e7" stroke="#123d25" stroke-width="4"></path>
+      </svg>
+      <span class="font-display text-[24px] leading-none text-white">Tourne-Bride</span>
+    </a>
+
+    <!-- Nav links -->
+    <ul class="hidden items-center gap-8 lg:flex">
+      {
+        navLinks.map((l) => (
+          <li>
+            <a
+              href={withBase(l.href)}
+              class:list={[
+                "group/nav relative font-heading text-[18px] font-medium transition-colors duration-200 hover:text-white",
+                isActive(l.href) ? "text-white" : "text-white/90",
+              ]}
+            >
+              {l.label}
+              <span
+                class:list={[
+                  "absolute -bottom-1 left-0 h-[2px] w-full origin-left rounded-full bg-white transition-transform duration-300",
+                  isActive(l.href) ? "scale-x-100" : "scale-x-0 group-hover/nav:scale-x-100",
+                ]}
+              />
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <button
+          type="button"
+          class="flex items-center gap-1 font-heading text-[18px] font-medium text-white/90 transition-colors hover:text-white"
+        >
+          Plus
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="mt-0.5">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </li>
+    </ul>
+
+    <!-- CTA button -->
+    <a
+      href={`${import.meta.env.BASE_URL}contact`}
+      class="group relative hidden overflow-hidden rounded-full bg-white px-6 py-3 lg:inline-flex"
+    >
+      <span class="relative z-10 font-heading text-[20px] font-bold leading-6 tracking-[-0.2px] text-forest transition-colors duration-300 group-hover:text-white">
+        Nous contacter
+      </span>
+      <span
+        class="absolute left-1/2 top-1/2 z-0 h-[400px] w-[300px] -translate-x-1/2 translate-y-[130%] rotate-[-30deg] bg-orange transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-[-50%]"
+      >
+      </span>
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button
+      type="button"
+      class="relative z-50 lg:hidden"
+      aria-label="Menu"
+      aria-expanded="false"
+      data-mobile-toggle
+    >
+      <svg data-icon-menu width="30" height="30" viewBox="0 0 24 24" fill="none">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke="white" stroke-width="2.5" stroke-linecap="round"></path>
+      </svg>
+      <svg data-icon-close width="30" height="30" viewBox="0 0 24 24" fill="none" class="hidden">
+        <path d="M6 6l12 12M18 6L6 18" stroke="white" stroke-width="2.5" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div data-mobile-menu class="fixed inset-0 z-40 hidden bg-forest lg:hidden">
+    <nav class="flex h-full flex-col items-center justify-center gap-6 px-6">
+      {
+        [
+          { label: "Accueil", href: "/" },
+          { label: "Le domaine", href: "/le-centre" },
+          { label: "Nos camps", href: "/camps" },
+          { label: "Internat", href: "/internat" },
+          { label: "Locations", href: "/locations" },
+          { label: "Nous soutenir", href: "/soutiens" },
+          { label: "Contact", href: "/contact" },
+        ].map((l) => (
+          <a
+            href={withBase(l.href)}
+            class:list={[
+              "font-display text-[30px] leading-none transition-colors",
+              isActive(l.href) ? "text-lime" : "text-white",
+            ]}
+          >
+            {l.label}
+          </a>
+        ))
+      }
+      <a
+        href={`${import.meta.env.BASE_URL}contact`}
+        class="mt-4 rounded-full bg-white px-8 py-3 font-heading text-[20px] font-bold text-forest"
+      >
+        Nous contacter
+      </a>
+    </nav>
+  </div>
+</header>

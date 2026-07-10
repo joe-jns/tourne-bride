@@ -1,0 +1,14 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# working reference (screenshots, framer source) - not part of the site
+_reference/
+
+# misc
+.DS_Store
+*.log
+.playwright-mcp/

@@ -1,0 +1,112 @@
+---
+const linksA = [
+  { label: "Accueil", href: "/" },
+  { label: "Le domaine", href: "/le-centre" },
+  { label: "Nos camps", href: "/camps" },
+  { label: "Internat", href: "/internat" },
+  { label: "Locations", href: "/locations" },
+];
+const linksB = [
+  { label: "Enquiers-toi", href: "/enquiers-toi" },
+  { label: "Le Chaînon", href: "/chainon" },
+  { label: "Nous soutenir", href: "/soutiens" },
+  { label: "Calendrier", href: "/calendrier" },
+  { label: "Contact", href: "/contact" },
+];
+const withBase = (p: string) => import.meta.env.BASE_URL + String(p).replace(/^\//, "");
+---
+
+<footer class="bg-forest pt-[80px]">
+  <div class="container-site">
+    <div class="grid grid-cols-1 gap-12 border-t border-white/10 pt-16 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Description + CTA -->
+      <div>
+        <p class="max-w-[420px] font-heading text-[20px] leading-[30px] text-mist">
+          Le Centre Protestant Tourne-Bride accueille les enfants depuis 1964 :
+          camps, internat et locations, dans un cadre naturel exceptionnel au
+          cœur de la Thudinie.
+        </p>
+        <a
+          href={`${import.meta.env.BASE_URL}contact`}
+          class="group relative mt-8 inline-block overflow-hidden rounded-full bg-white px-7 py-3"
+        >
+          <span class="relative z-10 font-heading text-[20px] font-bold text-forest transition-colors duration-300 group-hover:text-white">
+            Nous contacter
+          </span>
+          <span class="absolute inset-0 z-0 origin-bottom scale-y-0 bg-orange transition-transform duration-300 ease-out group-hover:scale-y-100"></span>
+        </a>
+      </div>
+
+      <!-- Links A -->
+      <nav class="lg:border-l lg:border-white/10 lg:pl-10">
+        <ul class="space-y-4">
+          {
+            linksA.map((l) => (
+              <li>
+                <a href={withBase(l.href)} class="font-heading text-[18px] text-mist transition-colors hover:text-white">
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Links B -->
+      <nav class="lg:border-l lg:border-white/10 lg:pl-10">
+        <ul class="space-y-4">
+          {
+            linksB.map((l) => (
+              <li>
+                <a href={withBase(l.href)} class="font-heading text-[18px] text-mist transition-colors hover:text-white">
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Contact -->
+      <div class="space-y-5 lg:border-l lg:border-white/10 lg:pl-10">
+        <a href="tel:+3271591961" class="flex items-center gap-3 font-heading text-[18px] text-mist hover:text-white">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5c0 8 7 15 15 15l1.5-3.5-4-2-1.5 2c-2.5-1-4.5-3-5.5-5.5l2-1.5-2-4L4 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          071 59 19 61 · 0496 18 14 14
+        </a>
+        <a href="mailto:yvan.dussart@tourne-bride.be" class="flex items-center gap-3 font-heading text-[18px] text-mist hover:text-white">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/></svg>
+          yvan.dussart@tourne-bride.be
+        </a>
+        <div class="flex items-start gap-3 font-heading text-[18px] text-mist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="mt-0.5 shrink-0"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span>Château Grignard, Chevesne 95<br />6542 Sars-la-Buissière</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Big wordmark -->
+    <div class="mt-16 flex items-center justify-center gap-4 lg:gap-8">
+      <span class="font-display text-[52px] leading-none text-white sm:text-[90px] lg:text-[140px]">TOURNE</span>
+      <svg viewBox="0 0 120 100" class="h-[48px] w-auto sm:h-[74px] lg:h-[112px]" fill="none">
+        <path d="M60 12 L112 88 H8 Z" fill="#feb835" stroke="#123d25" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M60 32 C48 55 46 72 46 88 H74 C74 72 72 55 60 32 Z" fill="#f1f8e7" stroke="#123d25" stroke-width="3"/>
+      </svg>
+      <span class="font-display text-[52px] leading-none text-white sm:text-[90px] lg:text-[140px]">BRIDE</span>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-10 flex flex-col items-center justify-between gap-6 border-t border-white/10 py-8 md:flex-row">
+      <div class="flex flex-wrap items-center gap-6 font-heading text-[16px] text-mist">
+        <span>©2026 Centre Protestant Tourne-Bride ASBL</span>
+        <a href={`${import.meta.env.BASE_URL}mentions-legales`} class="hover:text-white">Mentions légales</a>
+        <a href={`${import.meta.env.BASE_URL}confidentialite`} class="hover:text-white">Confidentialité</a>
+      </div>
+      <div class="flex items-center gap-4 text-mist">
+        <a href="#" aria-label="Facebook" class="hover:text-white"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V8c0-1 .3-2 2-2h2V2.2C18.5 2.1 17.3 2 16 2c-3 0-5 1.8-5 5.2V10H8v4h3v8h2z"/></svg></a>
+        <a href="#" aria-label="Instagram" class="hover:text-white"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="X" class="hover:text-white"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3h3l-7 8 8 10h-6l-5-6-5 6H2l8-9L2 3h6l4 5 5-5z"/></svg></a>
+        <a href="#" aria-label="YouTube" class="hover:text-white"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="6" width="19" height="12" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>

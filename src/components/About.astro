@@ -1,0 +1,102 @@
+---
+const features = [
+  {
+    icon: "vA6Ad4hymuLRx7QWHW8Dq32XVA.svg",
+    title: "Un cadre sûr et bienveillant",
+    text: "Bâtiment agréé aux normes de sécurité et d'hygiène de la Fédération Wallonie-Bruxelles, bien chauffé et encadré.",
+  },
+  {
+    icon: "a7A50h4Bm7Ukj3Jj9RXxjJ0Q6Yg.svg",
+    title: "Nature et découvertes",
+    text: "Bosquet, ravin pour l'escalade, verger, plaine de jeux et une faune riche à observer au fil des saisons.",
+  },
+];
+---
+
+<section class="relative overflow-hidden bg-forest pb-[60px] pt-[120px]">
+  <div class="container-site">
+    <div class="flex flex-col items-start gap-14 lg:flex-row">
+      <!-- Left arch image -->
+      <div class="relative w-full shrink-0 lg:w-[436px]" data-reveal="scale">
+        <img
+          src={`${import.meta.env.BASE_URL}images/t04pqFrRoEcpXW1STsKsnFDoMCI.png`}
+          alt="Camp by the lake"
+          class="h-[623px] w-full rounded-t-[218px] rounded-b-[24px] object-cover"
+        />
+      </div>
+
+      <!-- Right content -->
+      <div class="flex w-full flex-1 flex-col">
+        <div class="flex flex-col justify-between gap-8 md:flex-row">
+          <!-- Heading block -->
+          <div class="max-w-[560px]">
+            <span
+              class="inline-block -rotate-3 rounded-md bg-amber px-3 py-1 font-display text-[18px] leading-none text-forest"
+              data-reveal
+            >
+              Le domaine
+            </span>
+            <h2
+              data-reveal
+              data-reveal-delay="0.05"
+              class="relative mt-4 font-display text-[44px] leading-[1.05] text-white lg:text-[72px] lg:leading-[76px]"
+            >
+              Un havre de nature au cœur de la Thudinie
+              <img
+                src={`${import.meta.env.BASE_URL}images/bp8cD6ZRWiiFkH9hCPMVYrST3Q.svg`}
+                alt=""
+                aria-hidden="true"
+                class="absolute -right-8 -top-6 hidden h-[42px] w-[50px] lg:block"
+              />
+            </h2>
+            <p
+              data-reveal
+              data-reveal-delay="0.1"
+              class="mt-6 max-w-[502px] font-heading text-[20px] leading-[32px] text-mist"
+            >
+              Sur un promontoire rocheux qui surplombe la Sambre, notre propriété
+              de 5 hectares fait partie du parc naturel de la Haute Sambre — une
+              région charmante et méconnue de Belgique, à 12 km de la France.
+            </p>
+          </div>
+
+          <!-- Small arch image with NATURE tag -->
+          <div class="relative shrink-0" data-reveal="scale" data-reveal-delay="0.15">
+            <img
+              src={`${import.meta.env.BASE_URL}images/Sv1tGNHJc7wyM0MiwrqLzyEZVE.png`}
+              alt="Tents in the field"
+              class="h-[327px] w-[265px] rounded-t-[132px] rounded-b-[20px] object-cover"
+            />
+            <span
+              class="absolute -right-2 top-16 inline-block rotate-6 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
+            >
+              Nature
+            </span>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="my-10 border-white/15" />
+
+        <!-- Features -->
+        <div class="grid grid-cols-1 gap-10 md:grid-cols-2" data-stagger>
+          {
+            features.map((f) => (
+              <div class="flex gap-4" data-reveal>
+                <img src={`${import.meta.env.BASE_URL}images/${f.icon}`} alt="" class="h-14 w-12 shrink-0" />
+                <div>
+                  <h3 class="font-heading text-[20px] font-semibold text-white">
+                    {f.title}
+                  </h3>
+                  <p class="mt-2 max-w-[340px] font-heading text-[18px] leading-[26px] text-mist">
+                    {f.text}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

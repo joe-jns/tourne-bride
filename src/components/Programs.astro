@@ -1,0 +1,108 @@
+---
+// Draggable carousel; cards alternate a vertical offset on desktop.
+const cards = [
+  {
+    img: "i738aK4KaaUMFTdJtyz47uLUPmA.png",
+    title: "Nature & grand air",
+    text: "Balades, observation de la faune et initiation à l'escalade dans le ravin.",
+    down: true,
+  },
+  {
+    img: "32Or07csTLkfVEYnNPw2RlCkNg.png",
+    title: "Jeux & sport",
+    text: "Boulodrome, basket, grands jeux et défis en équipe dans la plaine.",
+    down: false,
+  },
+  {
+    img: "VtDbws3WWG30pRGlf9pNaTEgjs.png",
+    title: "Arts & créations",
+    text: "Peinture sur soie, linogravure, batik, gravure : place à l'imagination.",
+    down: true,
+  },
+  {
+    img: "2J08qlvuaEHpnrRLhq8WsI8UXI.png",
+    title: "Partages bibliques",
+    text: "Des moments de partage, des veillées et des histoires qui font grandir.",
+    down: false,
+  },
+  {
+    img: "jmkB0EjuPVTfQZDvtEuNAebCKU.png",
+    title: "Camps résidentiels",
+    text: "Séjours de quelques jours en bâtiment chauffé, bons repas et bons couchages.",
+    down: true,
+  },
+];
+---
+
+<section class="relative overflow-hidden bg-cream py-[80px] lg:py-[100px]">
+  <!-- Heading -->
+  <div class="container-site relative text-center">
+    <img
+      src={`${import.meta.env.BASE_URL}images/qi6XErSOH5xNf7R979ZatYl9rPE.svg`}
+      alt=""
+      aria-hidden="true"
+      class="absolute left-1/2 top-0 hidden h-[37px] w-[45px] -translate-x-[280px] lg:block"
+    />
+    <h2
+      data-reveal
+      class="relative inline-block font-display text-[38px] leading-[1.05] text-forest sm:text-[44px] lg:text-[72px]"
+    >
+      Des activités qui inspirent
+      <span
+        class="absolute -top-6 right-16 hidden -rotate-6 rounded-md bg-lime px-2.5 py-1 font-display text-[15px] leading-none text-forest lg:inline-block"
+      >
+        Activités
+      </span>
+    </h2>
+  </div>
+
+  <!-- Draggable infinite carousel -->
+  <div
+    data-drag
+    class="mt-10 w-full cursor-grab select-none overflow-hidden px-5 active:cursor-grabbing lg:mt-14 lg:cursor-none"
+    style="touch-action:pan-y"
+  >
+    <div data-drag-track class="flex w-max items-start gap-6 will-change-transform lg:gap-10">
+      {
+        cards.map((c) => (
+          <div class:list={["shrink-0 text-center", c.down && "lg:mt-[52px]"]}>
+            <img
+              src={`${import.meta.env.BASE_URL}images/${c.img}`}
+              alt={c.title}
+              draggable="false"
+              class="h-[230px] w-[230px] rounded-full object-cover sm:h-[300px] sm:w-[300px] lg:h-[380px] lg:w-[380px]"
+            />
+            <h3 class="mt-5 font-heading text-[22px] font-extrabold text-forest sm:text-[26px] lg:mt-8 lg:text-[32px]">
+              {c.title}
+            </h3>
+            <p class="mx-auto mt-2 max-w-[240px] font-heading text-[16px] leading-[24px] text-moss sm:max-w-[300px] sm:text-[18px] lg:mt-3 lg:max-w-[340px] lg:text-[20px] lg:leading-[32px]">
+              {c.text}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Custom drag cursor (desktop only) -->
+  <div
+    data-drag-cursor
+    class="pointer-events-none fixed left-0 top-0 z-[60] hidden h-[92px] w-[92px] items-center justify-center rounded-full bg-forest text-white opacity-0 shadow-xl transition-opacity duration-200 lg:flex"
+    style="will-change:transform"
+  >
+    <div class="drag-inner flex flex-col items-center">
+      <svg width="28" height="12" viewBox="0 0 28 12" fill="none">
+        <path
+          d="M6 1 1 6l5 5M22 1l5 5-5 5M1.5 6h25"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+      <span class="mt-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.14em]">
+        Glisser
+      </span>
+    </div>
+  </div>
+</section>

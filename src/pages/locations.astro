@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const properties = [
+  {
+    name: "« Sur le Roc »",
+    kind: "Chalet — maison canadienne",
+    img: "fTqizCj5ZHnhlU1Eiw2ixcK0.png",
+    desc: "Un meublé de vacances reconnu 2 clés par le Commissariat Général au Tourisme, pour 4 à 5 personnes, avec une terrasse ouverte sur la vallée.",
+    features: [
+      "Cuisine équipée (6 pers.)",
+      "2 chambres à lits jumeaux",
+      "Salle de bain avec baignoire",
+      "Terrasse 11 m² vue vallée",
+      "Poêle à pellets",
+      "Matériel bébé & lessiveuse",
+    ],
+    prices: [
+      ["Week-end", "125 €"],
+      ["Mid-week", "150 €"],
+      ["Semaine", "250 €"],
+      ["Mois", "900 €"],
+    ],
+    note: "+ caution 200 € · énergie au compteur",
+  },
+  {
+    name: "Le Château",
+    kind: "Bed & Breakfast · groupes & séminaires",
+    img: "b1R16Nkgvz2L6EUaX9klywT61c.png",
+    desc: "Pour étudiants, touristes, marcheurs (le domaine jouxte un GR et le Ravel), colloques et séminaires jusqu'à 60 personnes. Une salle avec scène, coulisses et feu ouvert, et une vue panoramique splendide.",
+    features: [
+      "Jusqu'à 60 personnes",
+      "Salle avec scène & feu ouvert",
+      "Petite restauration",
+      "Vue panoramique sur la vallée",
+    ],
+    prices: [
+      ["Bed & Breakfast", "30 €/nuit/pers."],
+      ["Étudiants (convention)", "15 €/nuit"],
+    ],
+    note: "Aucun supplément pour personne seule",
+  },
+  {
+    name: "Le Centre d'hébergement",
+    kind: "Classes vertes · colonies · patrouilles",
+    img: "Sv1tGNHJc7wyM0MiwrqLzyEZVE.png",
+    desc: "Une salle polyvalente de 50 m², une cuisine professionnelle équipée pour 32 couverts, deux dortoirs de 14 places et des chambrettes. La location inclut l'accès à une partie de la plaine de jeux.",
+    features: [
+      "2 dortoirs de 14 places",
+      "Cuisine pro (32 couverts)",
+      "Salle polyvalente 50 m²",
+      "Accès à la plaine de jeux",
+    ],
+    prices: [
+      ["Prix scout", "4 €/nuitée/pers."],
+      ["Prix normal", "8 €/nuitée/pers."],
+    ],
+    note: "Min. 25 pers. / 2 nuitées · caution 400 €",
+  },
+];
+---
+
+<Layout
+  title="Locations — Tourne-Bride"
+  description="Louez le chalet « Sur le Roc », le Château (B&B, séminaires) ou le Centre d'hébergement (classes vertes, colonies). Chaque location soutient l'œuvre de Tourne-Bride."
+>
+  <Navbar />
+  <main>
+    <PageHero
+      eyebrow="Locations"
+      title="Louez un lieu unique à Tourne-Bride"
+      subtitle="Que ce soit pour un petit ou un grand groupe, une journée ou un long séjour, enfants ou adultes — il y a toujours quelque chose qui convient."
+    />
+
+    <section class="bg-cream py-[100px]">
+      <div class="container-site space-y-24">
+        {
+          properties.map((p, i) => (
+            <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+              <div
+                class:list={["relative", i % 2 === 1 ? "lg:order-2" : ""]}
+                data-reveal="scale"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}images/${p.img}`}
+                  alt={p.name}
+                  class="h-[420px] w-full rounded-[28px] object-cover"
+                />
+              </div>
+              <div class:list={[i % 2 === 1 ? "lg:order-1" : ""]}>
+                <span
+                  data-reveal
+                  class="inline-block -rotate-2 rounded-md bg-lime px-3 py-1 font-display text-[16px] leading-none text-forest"
+                >
+                  {p.kind}
+                </span>
+                <h2
+                  data-reveal
+                  data-reveal-delay="0.05"
+                  class="mt-4 font-display text-[36px] leading-[1.05] text-forest lg:text-[52px] lg:leading-[56px]"
+                >
+                  {p.name}
+                </h2>
+                <p
+                  data-reveal
+                  data-reveal-delay="0.1"
+                  class="mt-4 font-heading text-[19px] leading-[30px] text-moss"
+                >
+                  {p.desc}
+                </p>
+                <ul data-reveal data-reveal-delay="0.12" class="mt-5 flex flex-wrap gap-2">
+                  {p.features.map((f) => (
+                    <li class="rounded-full bg-cream-2 px-4 py-2 font-heading text-[15px] font-medium text-forest">
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <div data-reveal data-reveal-delay="0.15" class="mt-6 flex flex-wrap gap-x-8 gap-y-2">
+                  {p.prices.map(([k, v]) => (
+                    <div class="font-heading">
+                      <span class="text-[15px] text-moss">{k} </span>
+                      <span class="text-[20px] font-bold text-forest">{v}</span>
+                    </div>
+                  ))}
+                </div>
+                <p class="mt-2 font-heading text-[15px] text-moss/80">{p.note}</p>
+                <a
+                  href="tel:+32496181414"
+                  data-reveal
+                  data-reveal-delay="0.18"
+                  class="group relative mt-6 inline-block overflow-hidden rounded-full bg-orange px-7 py-[15px]"
+                >
+                  <span class="relative z-10 font-heading text-[18px] font-bold text-white">
+                    Je veux louer — 0496 18 14 14
+                  </span>
+                  <span class="absolute inset-0 z-0 origin-bottom scale-y-0 bg-[#e05200] transition-transform duration-300 ease-out group-hover:scale-y-100" />
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Soutien -->
+    <section class="bg-forest py-[80px]">
+      <div class="container-site max-w-[820px] text-center">
+        <p data-reveal class="font-display text-[28px] leading-[1.15] text-white lg:text-[40px] lg:leading-[1.1]">
+          Le produit des locations est versé intégralement à l'œuvre.
+        </p>
+        <p data-reveal data-reveal-delay="0.08" class="mt-4 font-heading text-[20px] text-mist">
+          Une façon agréable et concrète de soutenir Tourne-Bride.
+        </p>
+      </div>
+    </section>
+
+    <CtaBand
+      title="Réservez votre séjour"
+      text="L'agenda des occupations est tenu par Tourne-Bride. Contactez-nous pour vérifier les disponibilités."
+      buttonLabel="Nous contacter"
+      buttonHref="/contact"
+    />
+  </main>
+  <Footer />
+</Layout>

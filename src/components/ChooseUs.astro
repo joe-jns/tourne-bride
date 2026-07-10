@@ -1,0 +1,91 @@
+---
+const tags = [
+  { label: "Équipe expérimentée", bg: "bg-lime", text: "text-forest", rot: "-rotate-3" },
+  { label: "Sécurité", bg: "bg-amber", text: "text-forest", rot: "rotate-2" },
+  { label: "Épanouissement", bg: "bg-orange", text: "text-white", rot: "-rotate-2" },
+];
+---
+
+<section class="relative overflow-hidden bg-forest py-[120px]">
+  <div class="container-site">
+    <div class="grid grid-cols-1 gap-20 lg:grid-cols-2">
+      <!-- Left -->
+      <div>
+        <span
+          data-reveal
+          class="inline-block -rotate-3 rounded-md bg-amber px-3 py-1 font-display text-[18px] leading-none text-forest"
+        >
+          Pourquoi nous faire confiance
+        </span>
+        <h2
+          data-reveal
+          data-reveal-delay="0.05"
+          class="relative mt-5 font-display text-[44px] leading-[1.05] text-white lg:text-[72px] lg:leading-[76px]"
+        >
+          Un accueil de confiance, depuis 1964
+          <img
+            src={`${import.meta.env.BASE_URL}images/bp8cD6ZRWiiFkH9hCPMVYrST3Q.svg`}
+            alt=""
+            aria-hidden="true"
+            class="absolute -right-4 top-6 hidden h-[42px] w-[50px] lg:block"
+          />
+        </h2>
+        <img
+          src={`${import.meta.env.BASE_URL}images/EtEKI00462QzvuEC2cekaszNQ.png`}
+          alt="Campers together"
+          data-reveal="scale"
+          class="mt-8 h-[444px] w-full rounded-[20px] object-cover"
+        />
+      </div>
+
+      <!-- Right -->
+      <div>
+        <div class="relative" data-reveal="scale">
+          <img
+            src={`${import.meta.env.BASE_URL}images/9wWPckIoWeE5ZSzWpoT2ELKECA.png`}
+            alt="Campers with ice cream"
+            class="h-[592px] w-full rounded-t-[300px] rounded-b-[20px] object-cover"
+          />
+          <!-- Floating tags -->
+          <div class="absolute -inset-x-6 bottom-10 flex items-center justify-center gap-1.5">
+            {
+              tags.map((t) => (
+                <span
+                  class:list={[
+                    "inline-block whitespace-nowrap rounded-md px-3 py-2 font-display text-[17px] leading-none shadow-md",
+                    t.bg,
+                    t.text,
+                    t.rot,
+                  ]}
+                >
+                  {t.label}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+        <p
+          data-reveal
+          class="mt-8 font-heading text-[20px] leading-[32px] text-mist"
+        >
+          Depuis 1964, les familles nous confient leurs enfants pour un accueil
+          chaleureux, sûr et bienveillant. Une équipe attentive aide chaque
+          enfant à s'épanouir et à grandir en confiance.
+        </p>
+        <a
+          href={`${import.meta.env.BASE_URL}camps`}
+          data-reveal
+          class="group relative mt-8 inline-block overflow-hidden rounded-full bg-orange px-8 py-[18px]"
+        >
+          <span class="relative z-10 font-heading text-[20px] font-bold text-white">
+            Découvrir nos activités
+          </span>
+          <span
+            class="absolute inset-0 z-0 origin-bottom scale-y-0 bg-[#e05200] transition-transform duration-300 ease-out group-hover:scale-y-100"
+          >
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
