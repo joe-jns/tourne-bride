@@ -4,108 +4,138 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import CtaBand from "../components/CtaBand.astro";
+import { agenda, toDate, formatRange, moisNom } from "../data/agenda.js";
 
-const BASE = import.meta.env.BASE_URL;
-const withBase = (p) => BASE + String(p).replace(/^\//, "");
+const withBase = (p) => import.meta.env.BASE_URL + String(p).replace(/^\//, "");
+
+// Prochains camps (les passés disparaissent automatiquement)
+const now = new Date();
+const upcoming = agenda
+  .filter((e) => e.type === "Camp" && toDate(e.end || e.start) >= now)
+  .sort((a, b) => toDate(a.start).getTime() - toDate(b.start).getTime());
 
 const activities = [
-  {
-    title: "Partages bibliques & veillées",
-    text: "Chaque soir, un temps de partage, des histoires et des veillées pour grandir ensemble.",
-  },
-  {
-    title: "Grands jeux & sport",
-    text: "Grands jeux, défis en équipe et activités de plein air dans la plaine et le bosquet.",
-  },
-  {
-    title: "Nature & découvertes",
-    text: "Balades, observation de la faune et découverte du domaine, entre Sambre et forêt.",
-  },
-  {
-    title: "Arts & créations",
-    text: "Peinture sur soie, linogravure, batik, gravure : place à l'imagination et au fait-main.",
-  },
-  {
-    title: "Bons repas",
-    text: "Des repas copieux, savoureux et variés, préparés avec soin pour toute la maisonnée.",
-  },
-  {
-    title: "Bons couchages",
-    text: "Un bâtiment agréé, bien chauffé et ventilé selon les saisons, pour des nuits paisibles.",
-  },
+  { title: "Partages bibliques & veillées", text: "Chaque soir, un temps de partage, des histoires et des veillées pour grandir ensemble." },
+  { title: "Grands jeux & sport", text: "Grands jeux, défis en équipe et activités de plein air dans la plaine et le bosquet." },
+  { title: "Nature & découvertes", text: "Balades, observation de la faune et découverte du domaine, entre Sambre et forêt." },
+  { title: "Arts & créations", text: "Peinture sur soie, linogravure, batik, gravure : place à l'imagination et au fait-main." },
+  { title: "Bons repas", text: "Des repas copieux, savoureux et variés, préparés avec soin pour toute la maisonnée." },
+  { title: "Bons couchages", text: "Un bâtiment agréé, bien chauffé et ventilé selon les saisons, pour des nuits paisibles." },
 ];
 
 const steps = [
-  {
-    title: "Se renseigner",
-    text: "Vérifiez les places encore disponibles pour le prochain camp au 0496 18 14 14.",
-  },
-  {
-    title: "Remplir le talon",
-    text: "Complétez le talon d'inscription et la fiche signalétique et médicale, en ligne ou par courrier.",
-  },
-  {
-    title: "Verser l'acompte",
-    text: "Virez le montant sur le compte BE52 0882 1037 5009 (nom de l'enfant + n° de téléphone en communication).",
-  },
-  {
-    title: "Préparer le trousseau",
-    text: "Recevez le trousseau et préparez tranquillement les affaires de votre enfant.",
-  },
-];
-
-const facts = [
-  ["Âge", "7 à 11 ans"],
-  ["Prix", "115 € / enfant"],
-  ["Fratrie", "215 € pour 2 enfants"],
-  ["Lieu", "Château Grignard, Sars-la-Buissière"],
+  { title: "Se renseigner", text: "Vérifiez les places encore disponibles pour le camp choisi au 0496 18 14 14." },
+  { title: "Remplir le talon", text: "Complétez le talon d'inscription et la fiche signalétique et médicale, en ligne ou par courrier." },
+  { title: "Verser l'acompte", text: "Virez le montant sur le compte BE52 0882 1037 5009 (nom de l'enfant + n° de téléphone en communication)." },
+  { title: "Préparer le trousseau", text: "Recevez le trousseau et préparez tranquillement les affaires de votre enfant." },
 ];
 ---
 
 <Layout
   title="Nos camps — Tourne-Bride"
-  description="Séjours résidentiels pour enfants de 7 à 11 ans : jeux, nature, arts, partages bibliques et veillées, dans un cadre sûr et chaleureux. Depuis 1964."
+  description="Les prochains camps de Tourne-Bride pour les enfants de 7 à 11 ans : dates, âges et tarifs. Jeux, nature, arts et partages bibliques, depuis 1964."
 >
   <Navbar />
   <main>
     <PageHero
       eyebrow="Nos camps"
-      title="Des séjours qui font grandir"
-      subtitle="Pour les enfants de 7 à 11 ans : jeux, nature, créations et partages bibliques, dans un cadre sûr et chaleureux. Comme un camp, avec un vrai esprit de famille."
+      title="Les prochains camps"
+      subtitle="Des séjours résidentiels pour les 7 à 11 ans : jeux, nature, créations et partages bibliques, dans un cadre sûr et chaleureux."
       image="EtEKI00462QzvuEC2cekaszNQ.png"
     />
 
-    <!-- Présentation -->
+    <!-- Prochains camps -->
     <section class="bg-cream py-[100px]">
       <div class="container-site">
-        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div>
-            <span
-              data-reveal
-              class="inline-block -rotate-3 rounded-md bg-amber px-3 py-1 font-display text-[18px] leading-none text-forest"
-            >
-              L'esprit Tourne-Bride
-            </span>
-            <h2
-              data-reveal
-              data-reveal-delay="0.05"
-              class="mt-4 font-display text-[40px] leading-[1.05] text-forest lg:text-[60px] lg:leading-[64px]"
-            >
-              Des colonies pas comme les autres
-            </h2>
-          </div>
-          <div data-reveal data-reveal-delay="0.1">
-            <p class="font-heading text-[20px] leading-[32px] text-moss">
-              Depuis 1964, « L'Évangile aux Enfants » organise à Tourne-Bride des
-              séjours résidentiels de quelques jours. On y joue, on explore, on
-              crée et on partage, encadré par une équipe attentive.
-            </p>
-            <p class="mt-4 font-heading text-[20px] leading-[32px] text-moss">
-              Le tout dans le respect de la liberté de conscience de chaque
-              enfant et de sa famille.
-            </p>
-          </div>
+        <div class="mb-12 max-w-[760px]">
+          <span
+            data-reveal
+            class="inline-block -rotate-3 rounded-md bg-amber px-3 py-1 font-display text-[18px] leading-none text-forest"
+          >
+            À l'agenda
+          </span>
+          <h2
+            data-reveal
+            data-reveal-delay="0.05"
+            class="mt-4 font-display text-[40px] leading-[1.05] text-forest lg:text-[64px] lg:leading-[68px]"
+          >
+            Réservez la place de votre enfant
+          </h2>
         </div>
+
+        {
+          upcoming.length === 0 ? (
+            <div data-reveal class="rounded-[28px] bg-cream-2 p-10 text-center">
+              <p class="font-heading text-[20px] text-moss">
+                Aucun camp n'est programmé pour le moment. Contactez-nous pour
+                connaître les prochaines dates au 0496 18 14 14.
+              </p>
+            </div>
+          ) : (
+            <div class="space-y-6" data-stagger>
+              {upcoming.map((c) => {
+                const s = toDate(c.start);
+                return (
+                  <article
+                    data-reveal
+                    class="flex flex-col gap-6 rounded-[28px] bg-cream-2 p-6 sm:flex-row sm:items-center sm:p-8"
+                  >
+                    <div class="flex w-full shrink-0 flex-row items-center gap-4 sm:w-[120px] sm:flex-col sm:gap-0 sm:text-center">
+                      <div class="font-display text-[52px] leading-none text-forest">
+                        {s.getDate()}
+                      </div>
+                      <div class="font-heading text-[18px] font-bold uppercase text-orange">
+                        {moisNom(s.getMonth())} {s.getFullYear()}
+                      </div>
+                    </div>
+                    <div class="flex-1 sm:border-l sm:border-forest/10 sm:pl-8">
+                      <h3 class="font-display text-[28px] leading-none text-forest">
+                        {c.title}
+                      </h3>
+                      <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="rounded-full bg-lime px-4 py-1.5 font-heading text-[15px] font-semibold text-forest">
+                          {formatRange(c)}
+                        </span>
+                        <span class="rounded-full bg-white px-4 py-1.5 font-heading text-[15px] font-semibold text-forest">
+                          {c.ageMin} à {c.ageMax} ans
+                        </span>
+                        {c.price && (
+                          <span class="rounded-full bg-white px-4 py-1.5 font-heading text-[15px] font-semibold text-forest">
+                            {c.price} € / enfant
+                          </span>
+                        )}
+                        {c.places && (
+                          <span class="rounded-full bg-white px-4 py-1.5 font-heading text-[15px] font-semibold text-forest">
+                            {c.places} places
+                          </span>
+                        )}
+                      </div>
+                      <p class="mt-4 max-w-[560px] font-heading text-[18px] leading-[26px] text-moss">
+                        {c.description}
+                      </p>
+                    </div>
+                    <a
+                      href="tel:+32496181414"
+                      class="group relative shrink-0 self-start overflow-hidden rounded-full bg-orange px-7 py-[15px] sm:self-center"
+                    >
+                      <span class="relative z-10 font-heading text-[18px] font-bold text-white">
+                        S'inscrire
+                      </span>
+                      <span class="absolute inset-0 z-0 origin-bottom scale-y-0 bg-[#e05200] transition-transform duration-300 ease-out group-hover:scale-y-100" />
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
+          )
+        }
+
+        <p data-reveal class="mt-8 font-heading text-[17px] text-moss/80">
+          Vous préférez une vue d'ensemble ? Consultez le{" "}
+          <a href={withBase("/calendrier")} class="font-bold text-orange hover:underline">
+            calendrier
+          </a>.
+        </p>
       </div>
     </section>
 
@@ -176,68 +206,36 @@ const facts = [
       </div>
     </section>
 
-    <!-- Infos pratiques -->
+    <!-- Le prix n'est jamais un obstacle -->
     <section class="bg-cream py-[100px]">
-      <div class="container-site">
-        <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <!-- Faits -->
-          <div>
-            <span
-              data-reveal
-              class="inline-block -rotate-2 rounded-md bg-lime px-3 py-1 font-display text-[18px] leading-none text-forest"
-            >
-              En pratique
-            </span>
-            <h2
-              data-reveal
-              data-reveal-delay="0.05"
-              class="mt-4 font-display text-[40px] leading-[1.05] text-forest lg:text-[56px] lg:leading-[60px]"
-            >
-              Les infos essentielles
-            </h2>
-            <dl class="mt-8 divide-y divide-forest/10" data-reveal data-reveal-delay="0.1">
-              {
-                facts.map(([k, v]) => (
-                  <div class="flex items-baseline justify-between gap-6 py-4">
-                    <dt class="font-heading text-[18px] text-moss">{k}</dt>
-                    <dd class="text-right font-heading text-[20px] font-bold text-forest">{v}</dd>
-                  </div>
-                ))
-              }
-            </dl>
-          </div>
-
-          <!-- Le prix n'est jamais un obstacle -->
-          <div class="flex flex-col gap-6">
-            <div data-reveal="scale" class="rounded-[28px] bg-forest p-9 text-white">
-              <h3 class="font-display text-[26px] leading-[1.1] lg:text-[32px]">
-                Le prix n'est jamais un obstacle
-              </h3>
-              <p class="mt-4 font-heading text-[18px] leading-[27px] text-mist">
-                Le prix ne nous permet aucun bénéfice, au contraire, et ne peut
-                jamais empêcher un enfant de participer. Parlez-nous-en en toute
-                confiance.
-              </p>
-            </div>
-            <div data-reveal class="rounded-[28px] bg-cream-2 p-9">
-              <h3 class="font-display text-[24px] leading-[1.1] text-forest">
-                Aides & remboursements
-              </h3>
-              <p class="mt-4 font-heading text-[18px] leading-[26px] text-moss">
-                Renseignez-vous auprès de votre mutuelle, du CPAS ou de votre
-                employeur : une attestation de séjour est remise à chaque
-                campeur. Le bâtiment est agréé aux normes de sécurité et
-                d'hygiène de la Fédération Wallonie-Bruxelles.
-              </p>
-            </div>
-          </div>
+      <div class="container-site grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div data-reveal="scale" class="rounded-[28px] bg-forest p-9 text-white">
+          <h3 class="font-display text-[26px] leading-[1.1] lg:text-[32px]">
+            Le prix n'est jamais un obstacle
+          </h3>
+          <p class="mt-4 font-heading text-[18px] leading-[27px] text-mist">
+            Le prix ne nous permet aucun bénéfice, au contraire, et ne peut
+            jamais empêcher un enfant de participer. Parlez-nous-en en toute
+            confiance.
+          </p>
+        </div>
+        <div data-reveal class="rounded-[28px] bg-cream-2 p-9">
+          <h3 class="font-display text-[24px] leading-[1.1] text-forest">
+            Aides & remboursements
+          </h3>
+          <p class="mt-4 font-heading text-[18px] leading-[26px] text-moss">
+            Renseignez-vous auprès de votre mutuelle, du CPAS ou de votre
+            employeur : une attestation de séjour est remise à chaque campeur. Le
+            bâtiment est agréé aux normes de sécurité et d'hygiène de la
+            Fédération Wallonie-Bruxelles.
+          </p>
         </div>
       </div>
     </section>
 
     <CtaBand
-      title="Une place pour votre enfant cet été ?"
-      text="Renseignez-vous sur les prochains camps et réservez sa place. Nous répondons à toutes vos questions."
+      title="Une question sur un camp ?"
+      text="Nous vous renseignons avec plaisir sur les dates, les places et l'inscription."
       buttonLabel="Nous contacter"
       buttonHref="/contact"
     />
