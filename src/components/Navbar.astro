@@ -7,6 +7,13 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+const moreLinks = [
+  { label: "Locations", href: "/locations" },
+  { label: "Calendrier", href: "/calendrier" },
+  { label: "Venir ici", href: "/venir-ici" },
+  { label: "Nous soutenir", href: "/soutiens" },
+];
+
 const BASE = import.meta.env.BASE_URL;
 const withBase = (p: string) => BASE + String(p).replace(/^\//, "");
 
@@ -62,16 +69,44 @@ const isActive = (href: string) =>
           </li>
         ))
       }
-      <li>
+      <li class="group relative">
         <button
           type="button"
           class="flex items-center gap-1 font-heading text-[18px] font-medium text-white/90 transition-colors hover:text-white"
         >
           Plus
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="mt-0.5">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            class="mt-0.5 transition-transform duration-300 group-hover:rotate-180"
+          >
             <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </button>
+        <!-- Dropdown -->
+        <div
+          class="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 translate-y-1 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
+        >
+          <div class="min-w-[220px] rounded-2xl bg-cream p-2 shadow-xl ring-1 ring-forest/10">
+            {
+              moreLinks.map((l) => (
+                <a
+                  href={withBase(l.href)}
+                  class:list={[
+                    "block rounded-xl px-4 py-2.5 font-heading text-[17px] font-medium transition-colors",
+                    isActive(l.href)
+                      ? "bg-cream-2 text-forest"
+                      : "text-forest/80 hover:bg-cream-2 hover:text-forest",
+                  ]}
+                >
+                  {l.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
       </li>
     </ul>
 
