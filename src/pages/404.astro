@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const withBase = (p) => import.meta.env.BASE_URL + String(p).replace(/^\//, "");
+
+const quickLinks = [
+  { label: "Le domaine", href: "/le-centre" },
+  { label: "Nos camps", href: "/camps" },
+  { label: "Internat", href: "/internat" },
+  { label: "Locations", href: "/locations" },
+  { label: "Contact", href: "/contact" },
+];
+---
+
+<Layout
+  title="Page introuvable — Tourne-Bride"
+  description="La page que vous cherchez n'existe pas ou a changé d'adresse."
+>
+  <Navbar />
+  <main
+    class="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-6 pb-20 pt-28 text-center"
+  >
+    <!-- Background image + overlay -->
+    <div class="absolute inset-0">
+      <img
+        src={`${import.meta.env.BASE_URL}images/9wWPckIoWeE5ZSzWpoT2ELKECA.png`}
+        alt=""
+        aria-hidden="true"
+        class="h-full w-full object-cover"
+        style="object-position:50% 45%"
+      />
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(rgba(18,61,37,0.86), rgba(18,61,37,0.92))"
+      >
+      </div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-[720px]">
+      <!-- Tent mark -->
+      <svg viewBox="0 0 120 100" class="mx-auto mb-2 h-16 w-auto lg:h-20" fill="none">
+        <path
+          d="M60 12 L112 88 H8 Z"
+          fill="#feb835"
+          stroke="#123d25"
+          stroke-width="5"
+          stroke-linejoin="round"></path>
+        <path
+          d="M60 32 C48 55 46 72 46 88 H74 C74 72 72 55 60 32 Z"
+          fill="#f1f8e7"
+          stroke="#123d25"
+          stroke-width="4"></path>
+      </svg>
+
+      <div class="font-display leading-none text-white text-[110px] sm:text-[150px] lg:text-[190px]">
+        404
+      </div>
+
+      <h1
+        class="mx-auto mt-2 max-w-[560px] font-display text-[30px] leading-[1.05] text-white lg:text-[46px]"
+      >
+        Cette page s'est perdue dans les bois
+      </h1>
+      <p class="mx-auto mt-5 max-w-[480px] font-heading text-[20px] leading-[30px] text-mist">
+        La page que vous cherchez n'existe pas ou a changé d'adresse. Reprenons le
+        sentier ensemble.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href={import.meta.env.BASE_URL}
+          class="group relative overflow-hidden rounded-full bg-orange px-8 py-[16px]"
+        >
+          <span class="relative z-10 font-heading text-[20px] font-bold text-white">
+            Retour à l'accueil
+          </span>
+          <span
+            class="absolute inset-0 z-0 origin-bottom scale-y-0 bg-[#e05200] transition-transform duration-300 ease-out group-hover:scale-y-100"
+          >
+          </span>
+        </a>
+        <a
+          href={withBase("/contact")}
+          class="rounded-full border-2 border-white/70 px-8 py-[14px] font-heading text-[20px] font-bold text-white transition-colors duration-300 hover:bg-white hover:text-forest"
+        >
+          Nous contacter
+        </a>
+      </div>
+
+      <!-- Quick links -->
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+        {
+          quickLinks.map((l) => (
+            <a
+              href={withBase(l.href)}
+              class="font-heading text-[17px] text-mist underline-offset-4 transition-colors hover:text-white hover:underline"
+            >
+              {l.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
